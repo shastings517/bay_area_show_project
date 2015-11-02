@@ -122,4 +122,72 @@ domain and i can whip up a quick logo and icon as well.
 
 Update this readme by 10AM! Thanks
 
+Parts to Test
+
+Models
+     User: has many events, has_secure password
+          username
+          password
+          password_digest
+          image
+          age
+          zip_code
+          genre[array]
+     Event: has many users
+          date
+          title
+          geolocation
+          genre[array]
+          price : integer
+          attending: boolean, default:false
+     User_Event
+Controllers
+     UsersController
+          index
+          new
+          create
+           update
+          show
+          edit
+          destroy
+     Sessions Controller
+          new
+          attempt_login
+          logout
+     EventsController
+          index
+          new
+          create
+          update
+          show
+          edit
+          destroy
+Views
+     navbar - _navbar.html.erb
+      login page - login.html.erb
+      signup page - signup.html.erb
+     events index page - events/index.html.erb
+     user profile page - show.html.erb
+          User profile page will render partials
+               account information - account.html.erb
+               friends list- friends.html.erb
+               Current plus history of attended events- events.html.erb
+Routes
+     root 'sessions#login'
+    get '/login', to: "sessions#login", as: 'login'
+     post '/login', to: "sessions#attempt_login"
+    get '/signup', to: “users#signup", as: 'signup
+     post '/signup', to: “users#create"
+    get ‘/events', to: “events#index", as: 'home'
+     get ‘/profile’, to: “users#show"
+     get ‘/friends’, to: "users#friends"
+     get 'event/new’ to: “events#new"
+     get event/edit to event#edit
+     post ‘event/update’, to: event#update
+     get ‘event/show’, to: ‘event#show'
+     get ‘user/:id, to : ‘ users#show"
+     get ‘user/edit, to: ‘users# edit"
+     put “user/update, to: ‘user#update
+    delete '/logout', to: "sessions#logout", as: "logout"
+
 
