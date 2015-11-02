@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102183923) do
+ActiveRecord::Schema.define(version: 20151102210312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "followable_id",                   null: false
+    t.string   "followable_type",                 null: false
+    t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables", using: :btree
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows", using: :btree
 
   create_table "shows", force: :cascade do |t|
     t.string   "title"
@@ -50,8 +63,13 @@ ActiveRecord::Schema.define(version: 20151102183923) do
     t.string   "image_url"
     t.integer  "age"
     t.string   "sex"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_foreign_key "user_shows", "shows"

@@ -24,7 +24,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+# Add Facebook Authenitcation
+gem 'omniauth-facebook'
 
 # Add follower capability
 gem "acts_as_follower"
@@ -45,6 +47,7 @@ group :development, :test do
   gem 'capybara-email'
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'dotenv-rails'
 end
 
 group :development do
