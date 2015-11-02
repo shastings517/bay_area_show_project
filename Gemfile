@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Add follower capability
+gem "acts_as_follower"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
