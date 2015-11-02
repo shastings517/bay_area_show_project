@@ -76,6 +76,12 @@ Create a static “About" page, create a static “contact" with Mailer
 API’s- Facebook Authentication, Google Maps, BandsIntown
 
 Addition gems:
+
+https://github.com/mkdynamic/omniauth-facebook - Facebook Auth
+
+https://github.com/apneadiving/Google-Maps-for-Rails - Install Google Maps
+
+https://github.com/typhoeus/typhoeus - Make API request to http://api.bandsintown.com/artists/Skrillex/events.json?api_version=2.0&app_id=YOUR_APP_ID
  
  https://github.com/thoughtbot/paperclip for image upload
 
