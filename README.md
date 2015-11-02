@@ -116,7 +116,7 @@ Thursday, Review, Enhance, Deploy to Heroku and Create Simple
 
 Presentation
 
-If we come up with a clever name we can go to pop.com get a free
+If we come up with a clever name we can go to pop.co get a free
 
 domain and i can whip up a quick logo and icon as well.
 
