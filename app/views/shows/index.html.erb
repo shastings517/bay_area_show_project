@@ -4,19 +4,36 @@
 <ul data-role="listview" data-inset="true">
     <% @shows.each do |s| %>
    
-
-    <li data-transition="flip">
+<li data-transition="flip">
 <%= link_to show_path(s) do %>
+    <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
+
+  <p> <strong>Date: </strong> <%=s.showdate%></p>
 
     <h2><%= s.title %></h2>
-    <strong><%= s.venue %></strong><br>
-    <%= s.description %><br>
-        Price:<br><%= s.price %>
+
+    <h4>Venue: <%=s.venue%></h4>
     <% end %>
   </li>
+<% end %>
+
+
+<% @response_body.each do |res| %>
+   
+  <li data-transition="flip">
+  <%= link_to res["url"] do %>
+    <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
+      
+      <p> <strong>Date: </strong> <%=res["datetime"] %></p>
+
+      <% if res["artists"][0] %>
+      <h1><%= res["artists"][0]["name"]%></h1>
+      <% end %>
+      <h4>Venue: <%=res["venue"]["name"]%></h4>
+      <% end %>
+    </li>
   <% end %>
-    
-  
+
 </ul>
 
 
