@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
   def index
-  @shows = Show.all.order(:id)
+  @shows = Show.all
   end
 
   def new

@@ -5,13 +5,13 @@
     <% @shows.each do |s| %>
    
 
-    <li>
+    <li data-transition="flip">
 <%= link_to show_path(s) do %>
 
     <h2><%= s.title %></h2>
-    <p><strong><%= s.venue %></strong></p>
-    <p><%= s.description %></p>
-        <p>Price:<br><%= s.price %></p>
+    <strong><%= s.venue %></strong><br>
+    <%= s.description %><br>
+        Price:<br><%= s.price %>
     <% end %>
   </li>
   <% end %>

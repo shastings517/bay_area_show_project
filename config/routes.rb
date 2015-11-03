@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     #Sign-in without Oauth
     get 'signup', to: 'sessions#signup'
     post   'login'   => 'sessions#signin'
-    get    'login'   => 'sessions#new'
+    get    'login'   => 'sessions#new', as: 'session'
 
     #Sign-in with Facebook Oauth
     get 'auth/:provider/callback', to: 'sessions#create'
