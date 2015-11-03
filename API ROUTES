@@ -1,0 +1,37 @@
+**** RECOMMENDED EVENTS ****
+
+*************************************************
+http://api.bandsintown.com/events/recommended.json?artists[]=Mac+Demarco&artists[]=Phantogram&location=San+Francisco,CA&app_id=YOUR_APP_ID&callback=bitEvents
+*************************************************
+
+**** VENUES MATCHING A SEARCH QUERY (supports location filtering) ***
+
+//Good for grabbing venue IDs, or identifying dif spellings for the same venue.  
+
+// May need to make multiple calls to dif venue spellings w/ dif IDs
+
+// This example finds all the venues named "The Fillmore" w/ a location of SF, CA.
+
+*************************************************
+http://api.bandsintown.com/venues/search.json?query=The+Fillmore&location=San+Francisco&app_id=YOUR_APP_ID
+*************************************************
+
+***** ALL UPCOMING EVENTS - SINGLE VENUE *****
+
+// This example lists all of the shows at The Fillmore
+
+*************************************************
+http://api.bandsintown.com/venues/275486/events.json?app_id=YOUR_APP_ID
+*************************************************
+
+
+
+******* EVENTS MATCHING SEARCH CRITERIA *****
+
+*************************************************
+http://api.bandsintown.com/events/search?artists[]=Odesza&location=San+Francisco,CA&radius=50&format=json&app_id=YOUR_APP_ID
+*************************************************
+
+
+
+
