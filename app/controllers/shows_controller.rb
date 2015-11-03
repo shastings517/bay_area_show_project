@@ -10,6 +10,7 @@ class ShowsController < ApplicationController
   end
 
   def show
+  	
   end
 end
 
