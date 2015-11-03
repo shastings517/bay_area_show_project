@@ -19,6 +19,7 @@ feature "create a new user" do
   scenario "creating a new user without all required fields" do
     within "form" do
       fill_in "username", with: ""
+   
       fill_in "password", with: ""
     end
     click_button "Create user"
