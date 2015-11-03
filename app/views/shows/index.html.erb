@@ -2,21 +2,21 @@
 
 
 <ul data-role="listview" data-inset="true">
-    <li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>
-    <li><%= link_to(show_path) do %>
-    <h2>50 Cent</h2>
-    <p><strong>House of Blues</strong></p>
-    <p>Rocking out with G-Unit all night.</p>
-        <p class="ui-li-aside"><strong>6:24</strong>PM</p>
-    <% end %></li>
+    <% @shows.each do |s| %>
+   
+
+    <li>
+<%= link_to show_path(s) do %>
+
+    <h2><%= s.title %></h2>
+    <p><strong><%= s.venue %></strong></p>
+    <p><%= s.description %></p>
+        <p>Price:<br><%= s.price %></p>
+    <% end %>
+  </li>
+  <% end %>
     
-    <li data-role="list-divider">Thursday, October 7, 2010 <span class="ui-li-count">1</span></li>
-    <li><a href="index.html">
-    <h2>Freddie Gibbs</h2>
-    <p><strong>Club Nasty</strong></p>
-    <p>Kickin hot tracks all night.</p>
-        <p class="ui-li-aside"><strong>4:48</strong>PM</p>
-    </a></li>
+  
 </ul>
 
 

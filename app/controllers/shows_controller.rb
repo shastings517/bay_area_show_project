@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
   def index
-  
+  @shows = Show.all.order(:id)
   end
 
   def new
@@ -9,8 +9,13 @@ class ShowsController < ApplicationController
   def edit
   end
 
-  def show
-  	
-  end
+    def show
+  	  begin
+    @show = Show.find params[:id]
+  rescue
+    flash[:error] = "No Shows Found"
+    redirect :action => :index
+ end
+end
 end
 
