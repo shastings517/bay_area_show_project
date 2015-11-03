@@ -5,7 +5,7 @@ class Show < ActiveRecord::Base
   validates :title, presence: true
   validates :venue, presence: true
   validates :genre, presence: true
-  validates :showdate, presence: true
+  
 
   validates :title, uniqueness: true
 
