@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Add Facebook Authenitcation
 gem 'omniauth-facebook'
 
+# Add to pull API
+gem "typhoeus"
+
 # Add follower capability
 gem "acts_as_follower"
 

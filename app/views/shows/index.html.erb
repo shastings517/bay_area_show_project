@@ -1,44 +1,37 @@
 <%= render 'layouts/navbar' %>
 
-<div data-role="main" class="ui-content">
-    <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Add New Show</a>
-
-    <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-      <form method="post" action="demoform.asp">
-        <div>
-          <h3>Login information</h3>
-          <label for="usrnm" class="ui-hidden-accessible">Username:</label>
-          <input type="text" name="user" id="usrnm" placeholder="Username">
-          <label for="pswd" class="ui-hidden-accessible">Password:</label>
-          <input type="password" name="passw" id="pswd" placeholder="Password">
-          <label for="log">Keep me logged in</label>
-          <input type="checkbox" name="login" id="log" value="1" data-mini="true">
-          <input type="submit" data-inline="true" value="Log in">
-        </div>
-      </form>
-    </div>
-
-
 
 <ul data-role="listview" data-inset="true">
     <% @shows.each do |s| %>
-   
-
-    <li data-transition="flip">
+   
+<li data-transition="flip">
 <%= link_to show_path(s) do %>
+    <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
 
-    <h2><%= s.title %></h2>
-    <strong><%= s.venue %></strong><br>
-    <%= s.description %><br>
-        Price:<br><%= s.price %>
-    <% end %>
+  <p> <strong>Date: </strong> <%=s.showdate%></p>
+
+    <h2><%= s.title %></h2>
+
+    <h4>Venue: <%=s.venue%></h4>
+    <% end %>
   </li>
+<% end %>
+
+
+<% @response_body.each do |res| %>
+   
+  <li data-transition="flip">
+  <%= link_to res["url"] do %>
+    <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
+      
+      <p> <strong>Date: </strong> <%=res["datetime"] %></p>
+
+      <% if res["artists"][0] %>
+      <h1><%= res["artists"][0]["name"]%></h1>
+      <% end %>
+      <h4>Venue: <%=res["venue"]["name"]%></h4>
+      <% end %>
+    </li>
   <% end %>
-    
-  
+
 </ul>
-
-
-
-
-

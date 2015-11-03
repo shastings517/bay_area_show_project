@@ -1,0 +1,25 @@
+<div data-role="main" class="ui-content">
+
+
+  <div data-role="page" id="page" >
+    <%= render 'layouts/navbar' %>
+    <ul data-role="listview" data-inset="true">
+      <% @shows.each_with_index do |s,i| %>
+        <li data-transition="flip">
+          <%= link_to "#page#{i + 1}" do %>
+            <h2><%= s.title %></h2>
+            <strong><%= s.venue %></strong><br>
+            <%= s.description %><br>
+                Price:<br><%= s.price %>
+          <% end %>
+
+        </li>
+        
+    </ul> 
+        <section data-role="page" id="<%="#page#{i + 1}"%>" data-theme="a">     
+              <article data-role="content"><%= s.title %></article>
+
+        </section>
+      <% end %>
+  </div> 
+</div>
