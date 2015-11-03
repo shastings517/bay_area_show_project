@@ -1,6 +1,6 @@
 class ShowsController < ApplicationController
   def index
-  	@shows = Show.all
+  
   end
 
   def new
@@ -12,3 +12,4 @@ class ShowsController < ApplicationController
   def show
   end
 end
+

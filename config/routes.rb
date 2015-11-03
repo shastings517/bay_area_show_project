@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
-  
-
-
-    get 'auth/:provider/callback', to: 'sessions#auth'
-    get 'auth/failure', to: redirect('/')
+    
+    root to: 'shows#index'
+    #Sign-in without Oauth
     get 'signup', to: 'sessions#signup'
-    get 'signout', to: 'sessions#destroy', as: 'signout'
+    post   'login'   => 'sessions#signin'
+    get    'login'   => 'sessions#new'
 
-    root to: "sessions#login"
+    #Sign-in with Facebook Oauth
+    get 'auth/:provider/callback', to: 'sessions#create'
+    get 'auth/failure', to: redirect('/')
+    get 'logout', to: 'sessions#destroy', as: 'logout'
+
+    
 
     resources :sessions, only: [:create, :destroy]
 
-    resources :users 
-    resources :shows
-    
+    resources :users do 
+    resources :shows, shallow: true
+  end
 
 end
 
