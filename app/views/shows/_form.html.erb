@@ -28,6 +28,10 @@
   <%= f.date_field :showdate %>
 </div>
 <div>
+  <%= f.label "Time of Show" %>
+  <%= f.time_select :time, {ampm: true} %>
+</div>
+<div>
   <%= f.label "Ticket sale date"%>
   <%= f.date_field :saledate %>
 </div>

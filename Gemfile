@@ -44,6 +44,9 @@ gem "acts_as_follower"
 # API CALLS
 gem "typhoeus"
 
+# Simple time-select field
+gem "combined_time_select", "~> 1.0.1"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
