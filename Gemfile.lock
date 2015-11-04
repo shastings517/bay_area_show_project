@@ -95,6 +95,11 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    handlebars_assets (0.19.1)
+      execjs (>= 1.2.9)
+      multi_json
+      sprockets (>= 2.0.3)
+      tilt
     hashie (3.4.3)
     i18n (0.7.0)
     jbuilder (2.3.2)
@@ -263,6 +268,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   dotenv-rails
   guard-rspec
+  handlebars_assets
   jbuilder (~> 2.0)
   jquery-rails (~> 2.3.0)
   jquery_mobile_rails
