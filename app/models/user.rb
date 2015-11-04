@@ -19,9 +19,12 @@ class User < ActiveRecord::Base
     user.uid      = auth.uid
     user.name     = auth.info.name
     user.save
+    if user.nil?
+        user = User.create!(:name, :email, :password, :username)
+
    	  end
-      end
-
-
-
 end
+end
+end
+
+

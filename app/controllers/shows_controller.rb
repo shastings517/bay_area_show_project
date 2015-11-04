@@ -24,3 +24,6 @@ class ShowsController < ApplicationController
   end
 end
 
+
+
+

@@ -4,26 +4,33 @@ class SessionsController < ApplicationController
   end
 
    def create
-   user = User.from_omniauth(env["omniauth.auth"])
+     user = User.from_omniauth(env["omniauth.auth"])
    session[:user_id] = user.id
    redirect_to root_path
+
    end
 
-  # def manual
-  #   user = User.find_by(email: params[:session][:email].downcase)
-  #   if user && user.authenticate(params[:session][:password])
-  #     # Log the user in and redirect to the user's show page.
-  #   else
-  #      flash[:danger] = 'Invalid email/password combination'
-  #       render 'new'
-  #   end
-  # end
+
+   def manual
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "You are now logged in!"
+      redirect_to root_path
+    else
+      render :signup
+    end
+   end
   
 
    def new
    end
 
    def sign_in
+   end
+
+   def signup
+    @user = User.new
    end
    	
 
@@ -33,7 +40,13 @@ class SessionsController < ApplicationController
     redirect_to session_path
    end
 
+   private
+  def user_params
+    params.require(:user).permit(:name,:email,:username, :password, :password_digest)
+  end
+
 
 end
+
 
 

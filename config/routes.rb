@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     root to: 'shows#index'
     #Sign-in without Oauth
     get 'signup', to: 'sessions#signup'
+    post 'signup', to: 'sessions#manual'
     post   'login'   => 'sessions#signin'
     get    'login'   => 'sessions#new', as: 'session'
 
