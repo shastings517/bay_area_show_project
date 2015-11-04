@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     #Sign-in without Oauth
     get 'signup', to: 'sessions#signup'
     post 'signup', to: 'sessions#manual'
-    post   'login'   => 'sessions#signin'
     get    'login'   => 'sessions#new', as: 'session'
+    post   'login'   => 'sessions#attempt_login'
 
     #Sign-in with Facebook Oauth
     get 'auth/:provider/callback', to: 'sessions#create'
@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
     resources :sessions, only: [:create, :destroy]
 
-    resources :users do 
-    resources :shows, shallow: true
-  end
+    resources :users  
+    resources :shows
+  
 
 end
 

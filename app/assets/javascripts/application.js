@@ -16,5 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
+// Example using bootswatch
+//
+// First import  variables
+
+
 
 

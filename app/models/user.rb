@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  # Password digest
+  has_secure_password
+
   # Validations
 
   validates :username, presence: true
@@ -22,9 +25,9 @@ class User < ActiveRecord::Base
     if user.nil?
         user = User.create!(:name, :email, :password, :username)
 
-   	  end
-end
-end
+   	    end
+      end
+    end
 end
 
 
