@@ -18,7 +18,11 @@
     <h4>Venue: <%=s.venue%></h4>
     <% end %>
 
+<!-- If user is the owner of this show, display this delete button.  If not, do not display -->
+
+    <div>
     <%= link_to 'Delete', s , method: :delete, class: "btn btn-danger btn-sm", data: {confirm: 'Are you sure?'} %>
+    </div>
 
 
   </li>
