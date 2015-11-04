@@ -1,5 +1,4 @@
 class ShowsController < ApplicationController
-
   before_action :find_show, only: [:show,:edit,:update,:destroy]
 
   def index
@@ -17,9 +16,10 @@ class ShowsController < ApplicationController
     @response_body = JSON.parse(@response.response_body)
 
     # All the user-defined shows in the db
-
-     # ####  CURRENTLY NOT FILTERING OUT ANY SHOWS BY DATE!!! #####
-    @shows = Show.all
+    date = Date.today
+    # ####  CURRENTLY NOT FILTERING OUT ANY SHOWS BY DATE!!! #####
+    # @shows = Show.find_by('showdate': date) ||= []
+    @shows = Show.where('showdate': date)
 
   end
 
