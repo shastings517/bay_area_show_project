@@ -31,6 +31,14 @@ class ShowsController < ApplicationController
   def show
       @show = Show.find params[:id]
   end
+
+
+  def destroy
+    @show = Show.find params[:id]
+    @show.destroy
+    flash[:alert] = "#{@show.title} has been deleted"
+    redirect_to root_path
+  end
    
 
    private
