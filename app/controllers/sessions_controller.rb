@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
      user = User.from_omniauth(env["omniauth.auth"])
    session[:user_id] = user.id
    redirect_to root_path
-
    end
+
 
 
    def manual
@@ -20,6 +20,9 @@ class SessionsController < ApplicationController
     else
       render :signup
     end
+   end
+
+   def attempt_login 
    end
   
 
