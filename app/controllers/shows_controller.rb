@@ -9,21 +9,42 @@ class ShowsController < ApplicationController
   end
 
   def new
+    @show = Show.new
+  end
+
+  def create
+    @show = Show.new(show_params)
+      if @show.save
+       redirect_to root_path
+      else
+      redirect_to new_user_show_path
+     end
   end
 
   def edit
   end
 
   def show
-    begin
       @show = Show.find params[:id]
-    rescue
-      flash[:error] = "No Shows Found"
-      redirect :action => :index
-   end
   end
-end
+   
 
+   private
+
+   def show_params
+      params.require(:show).permit(
+        :title,
+        :venue,
+        :image_url,
+        :description,
+        :genre,
+        :price,
+        :showdate,
+        :saledate,
+        :address
+        )
+   end
+end
 
 
 
