@@ -1,6 +1,10 @@
 <%= render 'layouts/navbar' %>
+<%= render 'layouts/errors' %>
 <%= @user.name %>
 <div>User Image</div>
+<%= @user.follow_count %>
+<%= link_to "Follow", follow_user_path(@user)%>
+<%= link_to "Unfollow", unfollow_user_path(@user) %>
 
 
   <div data-role="main" class="ui-content">

@@ -1,12 +1,10 @@
 class SessionsController < ApplicationController
 
-  def login
-  end
-
    def create
-     user = User.from_omniauth(env["omniauth.auth"])
+      user = User.from_omniauth(env["omniauth.auth"])
    session[:user_id] = user.id
    redirect_to root_path
+<<<<<<< HEAD
    end
 
 
@@ -20,20 +18,16 @@ class SessionsController < ApplicationController
     else
       render :signup
     end
+=======
+>>>>>>> follow
    end
 
    def attempt_login 
    end
   
 
-   def new
-   end
-
-   def sign_in
-   end
-
    def signup
-    @user = User.new
+    redirect_to facebook_path
    end
    	
 
@@ -43,10 +37,7 @@ class SessionsController < ApplicationController
     redirect_to session_path
    end
 
-   private
-  def user_params
-    params.require(:user).permit(:name,:email,:username, :password, :password_digest)
-  end
+  
 
 
 end
