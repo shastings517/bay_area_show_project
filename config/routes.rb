@@ -12,13 +12,22 @@ Rails.application.routes.draw do
     get 'auth/failure', to: redirect('/')
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
+    get '/shows', to: 'shows#index', as: 'shows'
+
     
 
     resources :sessions, only: [:create, :destroy]
 
-    resources :users do 
+    
+
+    resources :users do    
     resources :shows, shallow: true
+    member do
+      get :follow
+      get :unfollow
+    end
   end
+  
 
 end
 
