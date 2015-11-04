@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     get    'login'   => 'sessions#new', as: 'session'
 
     #Sign-in with Facebook Oauth
-    get 'auth/:provider/callback', to: 'sessions#create'
+    get 'auth/:provider/callback', to: 'sessions#create', as: 'facebook'
     get 'auth/failure', to: redirect('/')
     get 'logout', to: 'sessions#destroy', as: 'logout'
 
-    get '/shows', to: 'shows#index', as: 'shows'
+    # get '/shows', to: 'shows#index', as: 'shows'
 
     
 
@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   
 
 end
+
+
 
