@@ -13,11 +13,15 @@ class ShowsController < ApplicationController
   end
 
   def create
+
+    # find_user --> need to hold off on this until we have User up and runnign.
+    #  But we need to push a show that a user created into a user's shows []
     @show = Show.new(show_params)
       if @show.save
+        flash[:success] = "New Show Created!"
        redirect_to root_path
       else
-      redirect_to new_user_show_path
+      render :new
      end
   end
 
@@ -44,6 +48,10 @@ class ShowsController < ApplicationController
         :address
         )
    end
+
+    def find_user
+      @user = current_user
+    end
 end
 
 
