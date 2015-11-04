@@ -27,13 +27,4 @@ Rails.application.routes.draw do
       get :unfollow
     end
   end
-  
-
-<<<<<<< HEAD
-end
-=======
-end
-
-
-
->>>>>>> follow
+  end
