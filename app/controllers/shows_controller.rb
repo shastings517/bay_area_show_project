@@ -10,18 +10,17 @@ class ShowsController < ApplicationController
     threeDays = t.tomorrow.tomorrow.tomorrow
     endDate = threeDays.year.to_s + "-" + threeDays.month.to_s.rjust(n, "0") + "-" + threeDays.day.to_s.rjust(n, "0") 
 
-
-
-
+    # API REQUEST
     @response = Typhoeus::Request.new("http://api.bandsintown.com/events/search.json?location=San+Francisco,CA&date="+today+","+endDate+"&radius=10&app_id=777").run
 
-    puts "THIS IS TODAY #{today}"
+    # API RESPONSE
     @response_body = JSON.parse(@response.response_body)
 
     # All the user-defined shows in the db
 
      # ####  CURRENTLY NOT FILTERING OUT ANY SHOWS BY DATE!!! #####
     @shows = Show.all
+
   end
 
   def new
@@ -36,9 +35,19 @@ class ShowsController < ApplicationController
     #  But we need to push a show that a user created into a user's shows []
     @show = Show.new(show_params)
 
+
+
     # create showTime w/ the other 2 params
     # parse the time and showdate
     # @show.showTime = some logic
+
+    @show.showtime = Time.zone.local(@show.showdate.year,
+                      @show.showdate.month,
+                      @show.showdate.day,
+                      @show.time.hour,
+                      @show.time.min,
+                      @show.time.sec
+                      )
       if @show.save
        flash[:success] = "New Show Created!"
        redirect_to root_path
