@@ -1,0 +1,41 @@
+<%= form_for [@show] do |f|%>
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title, autofocus:true %>
+</div>
+<div>
+  <%= f.label :venue %>
+  <%= f.text_field :venue %>
+</div>
+<div>
+  <%= f.label :image_url%>
+  <%= f.text_field :image_url %>
+</div>
+<div>
+  <%= f.label :description%>
+  <%= f.text_field :description %>
+</div>
+<div>
+  <%= f.label :genre%>
+  <%= f.text_field :genre %>
+</div>
+<div>
+  <%= f.label :price%>
+  <%= f.text_field :price %>
+</div>
+<div>
+  <%= f.label "Date of Show" %>
+  <%= f.text_field :showdate %>
+</div>
+<div>
+  <%= f.label "Ticket sale date"%>
+  <%= f.text_field :saledate %>
+</div>
+<div>
+  <%= f.label :address%>
+  <%= f.text_field :address %>
+</div>
+<div>
+  <%= f.submit "Submit" %>
+</div>
+<% end %>
