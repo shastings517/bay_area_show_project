@@ -1,11 +1,20 @@
 class ShowsController < ApplicationController
+
+  before_action :find_show, only: [:show,:edit,:update,:destroy]
+
+
+
+
+
   def index
 
     @response = Typhoeus::Request.new("http://api.bandsintown.com/events/search.json?location=San+Francisco,CA&date=2015-11-03,2015-11-07&radius=10&app_id=777").run
     @response_body = JSON.parse(@response.response_body)
 
     # All the user-defined shows in the db
-    @shows = Show.all
+
+     # ####  CURRENTLY NOT FILTERING OUT ANY SHOWS BY DATE!!! #####
+    @shows = Show.find []
   end
 
   def new
@@ -25,11 +34,15 @@ class ShowsController < ApplicationController
      end
   end
 
+  # render the edit form
   def edit
   end
 
+  def update
+
+  end
+
   def show
-      @show = Show.find params[:id]
   end
 
 
@@ -59,6 +72,10 @@ class ShowsController < ApplicationController
 
     def find_user
       @user = current_user
+    end
+
+    def find_show
+      @show = Show.find params[:id]
     end
 end
 
