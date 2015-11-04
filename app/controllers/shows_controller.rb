@@ -35,12 +35,9 @@ class ShowsController < ApplicationController
     #  But we need to push a show that a user created into a user's shows []
     @show = Show.new(show_params)
 
-
-
     # create showTime w/ the other 2 params
     # parse the time and showdate
     # @show.showTime = some logic
-
     @show.showtime = Time.zone.local(@show.showdate.year,
                       @show.showdate.month,
                       @show.showdate.day,
@@ -63,8 +60,14 @@ class ShowsController < ApplicationController
   def update
 
     params[:show].parse_time_select! :time
-
     @show.update(show_params)
+    @show.showtime = Time.zone.local(@show.showdate.year,
+                      @show.showdate.month,
+                      @show.showdate.day,
+                      @show.time.hour,
+                      @show.time.min,
+                      @show.time.sec
+                      )
     if@show.save
       flash[:success] = "#{@show.title} has been updated!"
       redirect_to root_path

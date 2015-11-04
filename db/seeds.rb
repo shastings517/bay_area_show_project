@@ -7,8 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
-
 user = User.create(
 
   username: "Mark",
