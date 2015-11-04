@@ -1,6 +1,6 @@
 <%= render 'layouts/navbar' %>
 
-<%= link_to "Add Show", new_show_path, class: "btn-primary btn-sm" %>
+<%= link_to "Add Show", new_show_path, class: "btn-primary btn-sm text-center" %>
 
 
 <ul data-role="listview" data-inset="true">
@@ -46,8 +46,10 @@
       <% if res["artists"][0] %>
       <h1><%= res["artists"][0]["name"]%></h1>
       <% end %>
+
       <h4>Venue: <%=res["venue"]["name"]%></h4>
       <% end %>
+
     </li>
   <% end %>
 

@@ -4,7 +4,18 @@ class ShowsController < ApplicationController
 
   def index
 
-    @response = Typhoeus::Request.new("http://api.bandsintown.com/events/search.json?location=San+Francisco,CA&date=2015-11-03,2015-11-07&radius=10&app_id=777").run
+    n = 2
+    t = Time.zone.now
+    today = t.year.to_s + "-" + t.month.to_s.rjust(n, "0") + "-" + t.day.to_s.rjust(n, "0") 
+    threeDays = t.tomorrow.tomorrow.tomorrow
+    endDate = threeDays.year.to_s + "-" + threeDays.month.to_s.rjust(n, "0") + "-" + threeDays.day.to_s.rjust(n, "0") 
+
+
+
+
+    @response = Typhoeus::Request.new("http://api.bandsintown.com/events/search.json?location=San+Francisco,CA&date="+today+","+endDate+"&radius=10&app_id=777").run
+
+    puts "THIS IS TODAY #{today}"
     @response_body = JSON.parse(@response.response_body)
 
     # All the user-defined shows in the db
@@ -24,6 +35,10 @@ class ShowsController < ApplicationController
     # find_user --> need to hold off on this until we have User up and runnign.
     #  But we need to push a show that a user created into a user's shows []
     @show = Show.new(show_params)
+
+    # create showTime w/ the other 2 params
+    # parse the time and showdate
+    # @show.showTime = some logic
       if @show.save
        flash[:success] = "New Show Created!"
        redirect_to root_path
