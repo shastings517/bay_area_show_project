@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Add Facebook Authenitcation
 gem 'omniauth-facebook'
 
+# Bootstrap styling
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 
 
 # Add follower capability

@@ -16,5 +16,16 @@
 //= require turbolinks
 //= require_tree .
 
+// Example using bootswatch
+//
+// First import  variables
+@import "bootswatch/united/variables";
+
+// Then bootstrap itself
+@import "bootstrap";
+
+// And finally bootswatch style itself
+@import "bootswatch/united/bootswatch";
+
 
 
