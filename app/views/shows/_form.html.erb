@@ -29,7 +29,18 @@
 </div>
 <div>
   <%= f.label "Time of Show" %>
-  <%= f.time_select :time, {ampm: true} %>
+  <%= f.time_select :time,
+  :combined => true,
+  :default => Time.now.change(:hour => 9, :min => 30),
+  :minute_interval => 30,
+  :time_separator => "",
+  :start_hour => 00,
+  :start_minute => 00,
+  :end_hour => 23,
+  :end_minute => 30,
+  :labels => false,
+  :ampm => true
+  %>
 </div>
 <div>
   <%= f.label "Ticket sale date"%>

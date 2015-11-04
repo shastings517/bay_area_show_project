@@ -18,6 +18,9 @@ class ShowsController < ApplicationController
   end
 
   def create
+
+    params[:show].parse_time_select! :time
+
     # find_user --> need to hold off on this until we have User up and runnign.
     #  But we need to push a show that a user created into a user's shows []
     @show = Show.new(show_params)
@@ -34,6 +37,9 @@ class ShowsController < ApplicationController
   end
 
   def update
+
+    params[:show].parse_time_select! :time
+
     @show.update(show_params)
     if@show.save
       flash[:success] = "#{@show.title} has been updated!"
@@ -68,7 +74,8 @@ class ShowsController < ApplicationController
           :price,
           :showdate,
           :saledate,
-          :address
+          :address,
+          :time
           )
      end
 
