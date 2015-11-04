@@ -17,9 +17,26 @@ class ShowsController < ApplicationController
 
     # All the user-defined shows in the db
     date = Date.today
+
+    futureDate = date.tomorrow.tomorrow.tomorrow
     # ####  CURRENTLY NOT FILTERING OUT ANY SHOWS BY DATE!!! #####
     # @shows = Show.find_by('showdate': date) ||= []
     @shows = Show.where('showdate': date)
+    @futureShows = Show.where('showdate': futureDate)
+
+    # Combine all current shows with future shows
+
+    @futureShows.each do |show|
+      @shows.push(show)
+    end
+
+    
+
+
+
+    
+
+
 
   end
 
