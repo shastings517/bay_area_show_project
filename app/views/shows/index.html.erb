@@ -20,8 +20,15 @@
 
 <!-- If user is the owner of this show, display this delete button.  If not, do not display -->
 
+<!-- USER LOGIC HASN"T BEEN ADDED YET -->
+
     <div>
     <%= link_to 'Delete', s , method: :delete, class: "btn btn-danger btn-sm", data: {confirm: 'Are you sure?'} %>
+    </div>
+
+
+    <div>
+      <%= link_to 'Update', edit_show_path(s), class: "btn btn-primary btn-sm" %>
     </div>
 
 
