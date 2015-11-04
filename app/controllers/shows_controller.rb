@@ -18,7 +18,7 @@ class ShowsController < ApplicationController
     #  But we need to push a show that a user created into a user's shows []
     @show = Show.new(show_params)
       if @show.save
-        flash[:success] = "New Show Created!"
+       flash[:success] = "New Show Created!"
        redirect_to root_path
       else
       render :new

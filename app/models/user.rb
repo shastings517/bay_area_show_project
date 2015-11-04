@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
     if user.nil?
         user = User.create!(:name, :email, :password, :username)
 
-   	  end
-end
-end
+   	    end
+      end
+    end
 end
 
 
