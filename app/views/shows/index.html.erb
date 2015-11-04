@@ -6,7 +6,7 @@
 <ul data-role="listview" data-inset="true">
     <% @shows.each do |s| %>
    
-<%= link_to show_path(s.id) do %>
+
 <li data-transition="flip">
     <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
 
@@ -16,7 +16,7 @@
     <h2><%= s.title %></h2>
 
     <h4>Venue: <%=s.venue%></h4>
-    <% end %>
+
 
 <!-- If user is the owner of this show, display the delete and update buttons.  If not, do not display -->
 
@@ -38,7 +38,7 @@
 <% @response_body.each do |res| %>
    
   <li data-transition="flip">
-  <%= link_to res["url"] do %>
+    <a href="" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
       
       <p> <strong>Date: </strong> <%=res["datetime"] %></p>
@@ -48,11 +48,56 @@
       <% end %>
 
       <h4>Venue: <%=res["venue"]["name"]%></h4>
-      <% end %>
 
+    </a>
     </li>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            
+            <div class="row">
+              <div class="col-md-4">.col-md-4</div>
+              <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+              <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9">
+                Level 1: .col-sm-9
+                <div class="row">
+                  <div class="col-xs-8 col-sm-6">
+                    Level 2: .col-xs-8 .col-sm-6
+                  </div>
+                  <div class="col-xs-4 col-sm-6">
+                    Level 2: .col-xs-4 .col-sm-6
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 
 </ul>
+
+
 
 
