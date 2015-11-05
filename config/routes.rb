@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
     
     root to: 'shows#index'
-    #Sign-in without Oauth
-    get 'signup', to: 'sessions#signup'
-    post 'signup', to: 'sessions#manual'
-    post   'login'   => 'sessions#signin'
-    get    'login'   => 'sessions#new', as: 'session'
-    get 'logout', to: 'sessions#destroy', as: 'logout'
+   
+  get '/login', to: "sessions#login", as: 'login'
+  post '/login', to: "sessions#attempt_login"
+
+  get '/signup', to: "sessions#signup", as: 'signup'
+  post '/signup', to: "sessions#create"
+  
+  delete '/logout', to: "sessions#logout", as: "logout"
+
+  # get '/home', to: "sessions#index", as: 'home'
 
     # get '/shows', to: 'shows#index', as: 'shows'
 
     
-    resources :sessions, only: [:create, :destroy]
+    # resources :sessions, only: [:create, :destroy]
 
     
 

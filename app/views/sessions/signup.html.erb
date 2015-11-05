@@ -1,24 +1,43 @@
-<%= render 'navbar' %>
 
-   
-    <div role="main" class="ui-content">
-        <h3>Sign Up</h3>
 
-       <%= form_for(:user, url: signup_path) do |f|%>
 
-<p>
-  <%= f.label(:username) %>
-  <%= f.text_field(:username, autofocus: true) %>
-</p>
-<p>
-  <%= f.label(:email) %>
-  <%= f.text_field(:email, autofocus: true) %>
-</p>
 
-<p>
-  <%= f.submit("Signup", class: "btn btn-primary") %>
-</p>
-  <%= link_to "Have an account already? Log in here", login_path %>
+
+<div class="col-sm-offset-3">
+  <div class="col-sm-7">
+  <% if @user.errors.any? %>
+  <ul class="alert alert-danger">
+  <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+  </ul> 
 <% end %>
+    <div class="well">
+      <h2 class="text-center">Sign Up!</h2><br>
+      <%= form_for @user, url: signup_path do |f| %>
+        <div class="form-group">
+          <%= f.label :username, class:"control-label" %>
+          <%= f.text_field :username, class:"form-control" %>
         </div>
-  
+
+        <div class="form-group">
+          <%= f.label :email, class:"control-label" %>
+          <%= f.text_field :email, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :image_url, class:"control-label" %>
+          <%= f.text_field :image_url, class:"form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, class:"control-label" %>
+          <%= f.password_field :password, class:"form-control" %>
+        </div>
+
+        <%= f.submit "Signup", id:"submit-user", class:"btn btn-block btn-success text-center" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

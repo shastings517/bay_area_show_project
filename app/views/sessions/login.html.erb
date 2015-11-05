@@ -1,0 +1,24 @@
+<%= render 'navbar' %>
+
+   
+    <div role="main" class="ui-content">
+        <h3>Log-In</h3>
+
+       <%= form_for(:user, url: login_path) do |f|%>
+
+<p>
+  <%= f.label(:username) %>
+  <%= f.text_field(:username, autofocus: true) %>
+</p>
+<p>
+  <%= f.label(:password) %>
+  <%= f.text_field(:password, autofocus: true) %>
+</p>
+
+<p>
+  <%= f.submit("Login", class: "btn btn-primary") %>
+</p>
+  <%= link_to "Don't have an account? Sign up here", signup_path %>
+<% end %>
+        </div>
+  

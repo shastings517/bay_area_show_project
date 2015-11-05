@@ -1,14 +1,16 @@
 class SessionsController < ApplicationController
-    before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
+    # before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
 
-
+    # render signup page
    def signup
     @user = User.new
    end
 
+   # render login page
    def login
    end
 
+   # create a new user from signup
    def create
       @user = User.create user_params
     if @user.save
@@ -19,7 +21,7 @@ class SessionsController < ApplicationController
     end
    end
 
-
+   # login post
   def attempt_login
     if params[:username].present? && params[:password].present?
       found_user = User.where(username: params[:username]).first
@@ -37,7 +39,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
+  def logout
     # session.clear
     session[:user_id] = nil
     flash[:notice] = "Logged out"
