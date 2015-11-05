@@ -14,6 +14,41 @@ class ShowsController < ApplicationController
     # API RESPONSE
     @response_body = JSON.parse(@response.response_body)
 
+    # loop through the response
+    # Make a new Show document per api response
+    # store in the db
+    # delete shows that have "expired"?
+
+    @response_body.each do |show|
+
+      # date --> gives back a DateTime object
+      date = DateTime.parse(show["datetime"])
+
+      unless show["on_sale_datetime"] == nil
+      ticketDate = DateTime.parse(show["on_sale_datetime"])
+      end
+
+      artist = show["artists"][0]["name"]
+      venue = show["venue"]["name"]
+      latitude = show["venue"]["latitude"]
+      longitude = show["venue"]["longitude"]
+      tickets = show["ticket_url"]
+
+      show = Show.create(
+        title: artist,
+        venue: venue,
+        image_url: "www.google.com",
+        attendance: 0,
+        latitude: latitude, 
+        longitude: longitude,
+        showdate: date,
+        saledate: ticketDate,
+        showtime: date
+        )
+      
+    end
+
+
     # All the user-defined shows in the db
     date = Date.today
 
