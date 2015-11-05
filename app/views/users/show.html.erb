@@ -7,14 +7,21 @@
 <%= link_to "Unfollow", unfollow_user_path(@user) %>
 
 
-  <div data-role="navbar">
-    <ul>
-      <li><a href="#" class="ui-btn">Account</a></li>
-      <li><a href="#" class="ui-btn">Attending</a></li>
-      <li><a href="#" class="ui-btn">Friends</a></li>
-    
-    </ul>
-  </div>
+  <div data-role="navbar" id="attach">
+  <ul>
+  <li>
+      <%= link_to "Account", '#', class: "ui-btn", id: "account" %>
+      </li>
+      <li>
+      <%= link_to "Attending", '#', class: "ui-btn", id: "attending" %>
+      </li>
+      <li>
+      <%= link_to "Friends", '#', class: "ui-btn", id: "friends" %>
+      </li>
+      </ul>
+    	<div id="swap"></div>
+    </div>
+ 
 
 
 

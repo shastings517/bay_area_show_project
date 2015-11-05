@@ -16,12 +16,79 @@
 //= require handlebars.runtime
 //= require_tree ./templates
 //= require turbolinks
+//= require_tree .
+
+$("#friends").click(function(e){
+	e.preventDefault();
 
 
-// Example using bootswatch
-//
-// First import  variables
+	$.ajax({
+	  type: 'get',
+	  url: '/users',
+	  dataType: 'json',
+	  data: {user:{name: name}}
+	}).done(function(res) {
+		console.log(res);
+	  if (res.errors) {
+	    $(createErrors(res.errors)).appendTo("#attach").hide().slideDown(500);
+	  } else {
 
+	  	console.log('success!');
+	    $("#swap").empty();
+	    $(HandlebarsTemplates['friends/friends'](res))
 
+	      .appendTo('#swap')
+	      .hide()
+	      .slideDown(500);
+	      
 
+	  
+	  }
+	});
+});
 
+$("#account").click(function(e){
+	e.preventDefault();
+	$.ajax({
+	  type: 'get',
+	  url: '/users',
+	  dataType: 'json',
+	}).done(function(res) {
+		console.log(res);
+	  if (res.errors) {
+	    $(createErrors(res.errors)).appendTo("#attach").hide().slideDown(500);
+	  } else {
+	  	console.log('success!');
+	    $("#swap").empty();
+	    $(HandlebarsTemplates['accounts/account'](res))
+	      .appendTo('#swap')
+	      .hide()
+	      .slideDown(500);
+
+	  
+	  }
+	});
+});
+
+$("#attending").click(function(e){
+	e.preventDefault();
+
+	$.ajax({
+	  type: 'get',
+	  url: '/users',
+	  dataType: 'json',
+	}).done(function(res) {
+		console.log(res);
+	  if (res.errors) {
+	    $(createErrors(res.errors)).appendTo("#attach").hide().slideDown(500);
+	  } else {
+	  	console.log('success!');
+	    $("#swap").empty();
+
+	    $(HandlebarsTemplates['attending/attending'](res))
+	      .appendTo('#swap')
+	      .hide()
+	      .slideDown(500);
+	  }
+	});
+});
