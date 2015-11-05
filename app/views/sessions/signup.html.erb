@@ -5,10 +5,7 @@
         <h3>Sign Up</h3>
 
        <%= form_for(:user, url: signup_path) do |f|%>
-<p>
-  <%= f.label(:name) %>
-  <%= f.text_field(:name, autofocus: true) %>
-</p>
+
 <p>
   <%= f.label(:username) %>
   <%= f.text_field(:username, autofocus: true) %>
@@ -17,10 +14,7 @@
   <%= f.label(:email) %>
   <%= f.text_field(:email, autofocus: true) %>
 </p>
-<p>
-  <%= f.label(:password) %>
-  <%= f.password_field(:password) %>
-</p>
+
 <p>
   <%= f.submit("Signup", class: "btn btn-primary") %>
 </p>

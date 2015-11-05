@@ -1,6 +1,6 @@
 <%= render 'layouts/navbar' %>
 
-<%= link_to "Add Show", new_show_path, class: "btn-primary btn-sm text-center" %>
+<%= link_to "Add Show", new_user_show_path(current_user), class: "btn-primary btn-sm text-center" %>
 
 <!-- USER CREATED SHOWS -->
 <ul data-role="listview" data-inset="true">

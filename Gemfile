@@ -29,9 +29,17 @@ gem 'bcrypt', '~> 3.1.7'
 # Add Facebook Authenitcation
 gem 'omniauth-facebook'
 
+
+# Adding Handlebars Gem
+gem 'handlebars_assets'
+
+# Add to pull API
+gem "typhoeus"
+
 # Bootstrap styling
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
+
 
 
 # Add follower capability
