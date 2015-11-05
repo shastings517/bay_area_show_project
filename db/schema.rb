@@ -64,15 +64,8 @@ ActiveRecord::Schema.define(version: 20151104210920) do
     t.string   "password_digest"
     t.string   "email"
     t.string   "image_url"
-    t.integer  "age"
-    t.string   "sex"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "oauth_token"
-    t.datetime "oauth_expires_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_foreign_key "user_shows", "shows"
