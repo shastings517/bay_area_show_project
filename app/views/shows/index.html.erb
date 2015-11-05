@@ -2,24 +2,68 @@
 
 <%= link_to "Add Show", new_show_path, class: "btn-primary btn-sm text-center" %>
 
-
-
+<!-- USER CREATED SHOWS -->
 <ul data-role="listview" data-inset="true">
+<% if @shows %>
+<% @shows.each do |s| %>
 
-    <% if @shows %>
-    <% @shows.each do |s| %>
-   
-<%= link_to show_path(s.id) do %>
-<li data-transition="flip">
-    <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
+  <li data-transition="flip">
+  <!-- MODAL LINK -->
+    <a href="" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      <img src="https://lh4.ggpht.com/oA32f7LzZ0JPCzn6e6QG_8nbNgK8XNAU6CgWy-kCBc_z1JUNKTFrg5VZ2lhFZhqG2H8=w300" alt="">
 
-    <h1> <%=s.showtime.strftime("%B %d, %Y")%></h1>
+      <p> <strong>Date: </strong> <%=s.showdate%></p>
 
-    <h2><%= s.title %></h2>
+      <h2><%= s.title %></h2>
 
-    <h4>Venue: <%=s.venue%></h4>
-    <% end %>
+      <h4>Venue: <%=s.venue%></h4>
+    </a>
 
+  <!-- MODAL -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-admin" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="col-xs-10">
+              <h4 class="modal-title" id="myModalLabel"><%= s.showdate %></h4>
+            </div>
+            <div class="col-xs-2">
+              <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+          </div>
+          <div class="modal-body">
+
+            <div class="row">
+              <div class="col-md-6"><h1><%= s.title %></h1></div>
+              <div class="col-md-6"><img src="http://lorempixel.com/g/400/300/" alt=""></div>
+            </div>
+            <div class="row">
+
+            </div>
+            <div class="row">
+
+            </div>
+            <div class="row">
+
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <div class="col-xs-4">
+              <button type="button" class="btn btn-default attendBtn">Attend</button>
+            </div>
+            <div class="col-xs-4">
+              <button type="button" class="btn btn-default">Tickets</button>
+            </div>
+            <div class="col-xs-4 attendance">
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- If user is the owner of this show, display the delete and update buttons.  If not, do not display -->
 
@@ -29,14 +73,12 @@
     <%= link_to 'Delete', s , method: :delete, class: "btn btn-danger btn-sm", data: {confirm: 'Are you sure?'} %>
     </div>
 
-
     <div>
       <%= link_to 'Update', edit_show_path(s), class: "btn btn-primary btn-sm" %>
     </div>
 
-
-   </li>
-    <% end %>
+  </li>
+<% end %>
 <% end %>
 
 
