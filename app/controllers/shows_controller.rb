@@ -31,6 +31,13 @@ class ShowsController < ApplicationController
       end
 
       artist = show["artists"][0]["name"]
+
+      # API CALL FOR ARTIST IMAGE
+      @artist_response = Typhoeus::Request.new("http://api.bandsintown.com/artists/Beach%20House.json?api_version=2.0&app_id=777").run
+      @artist_body = JSON.parse(@artist_response.response_body)
+      image = @artist_body["image_url"]
+      ##########################################################
+
       venue = show["venue"]["name"]
       latitude = show["venue"]["latitude"]
       longitude = show["venue"]["longitude"]
@@ -39,7 +46,7 @@ class ShowsController < ApplicationController
       show = Show.create(
         title: artist,
         venue: venue,
-        image_url: "www.google.com",
+        image_url: image,
         attendance: 0,
         latitude: latitude, 
         longitude: longitude,
@@ -73,6 +80,8 @@ class ShowsController < ApplicationController
       @shows.push(show)
     end
   end
+
+
 
   def new
     @show = Show.new
