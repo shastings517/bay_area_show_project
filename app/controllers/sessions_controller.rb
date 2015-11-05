@@ -1,18 +1,62 @@
 class SessionsController < ApplicationController
+    before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
+
+
+   def signup
+    @user = User.new
+   end
+
+   def login
+   end
 
    def create
-      user = User.from_omniauth(env["omniauth.auth"])
-   session[:user_id] = user.id
-   redirect_to root_path
-
+      @user = User.create user_params
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path
+    else
+      render :signup
+    end
    end
+
+
+  def attempt_login
+    if params[:username].present? && params[:password].present?
+      found_user = User.where(username: params[:username]).first
+      if found_user && found_user.authenticate(params[:password])
+        flash[:alert] = "Welcome back #{found_user.email}!"
+        session[:user_id] = found_user.id
+        redirect_to home_path
+      else
+        flash[:alert] = "username / password combination is invalid"
+        redirect_to login_path(@user)
+      end
+    else
+      flash[:alert] = "please enter username and password"
+      redirect_to login_path
+    end
+  end
+
+  def destroy
+    # session.clear
+    session[:user_id] = nil
+    flash[:notice] = "Logged out"
+    redirect_to login_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(
+      :username,
+      :password,
+      :avatar_url,
+      :email
+    )
+  end
     
 
-   def destroy
-    session[:user_id] = nil
-    reset_session
-    redirect_to session_path
-   end
+   
 
   
 

@@ -75,13 +75,11 @@ class ShowsController < ApplicationController
         showtime: date
         )
     end
-
     # IMAGE LOGIC
     # If image_url is present, DO NOT MAKE API CALL, if not then make API call.
     # Which means show = Show.new() and then .save() after api call
     # All the user-defined shows in the db
     date = Date.today
-
     # Find all shows from today til 3 days from now in DB
     oneDay = date.tomorrow
     twoDays = date.tomorrow.tomorrow
@@ -102,6 +100,7 @@ class ShowsController < ApplicationController
       @shows.push(show)
     end
   end
+  
 
 
   def new
