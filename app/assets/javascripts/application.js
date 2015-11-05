@@ -26,6 +26,7 @@ $("#friends").click(function(e){
 	  type: 'get',
 	  url: '/users',
 	  dataType: 'json',
+	  data: {user:{name: name}}
 	}).done(function(res) {
 		console.log(res);
 	  if (res.errors) {
