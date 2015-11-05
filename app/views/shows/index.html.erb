@@ -35,7 +35,7 @@
           <div class="modal-body">
             
             <div class="row">
-              <div class="col-md-6"><%= s.title %></div>
+              <div class="col-md-6"><h1><%= s.title %></h1></div>
               <div class="col-md-6"><img src="http://lorempixel.com/g/400/300/" alt=""></div>
             </div>
             <div class="row">
@@ -51,13 +51,13 @@
           </div>
           <div class="modal-footer">
             <div class="col-xs-4">
-              <button type="button" class="btn btn-default">Attend</button>  
+              <button type="button" class="btn btn-default attendBtn">Attend</button>  
             </div>
             <div class="col-xs-4">
               <button type="button" class="btn btn-default">Tickets</button>  
             </div>
-            <div class="col-xs-4">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+            <div class="col-xs-4 attendance">
+              
             </div>
             
             
@@ -119,8 +119,8 @@
           <div class="modal-body">
             
             <div class="row">
-              <div class="col-md-6"><%= res["artists"][0]["name"]%></div>
-              <div class="col-md-6"><img src="http://lorempixel.com/g/400/300/" alt=""></div>
+              <div class="col-md-6 text-center"><h1><%= res["artists"][0]["name"]%></h1></div>
+              <div class="col-md-6 text-center"><img src="http://lorempixel.com/g/400/300/" alt=""></div>
             </div>
             <div class="row">
               
@@ -135,13 +135,14 @@
           </div>
           <div class="modal-footer">
             <div class="col-xs-4">
-              <button type="button" class="btn btn-default">Attend</button>  
+              <button type="button" class="btn btn-default attendBtn">Attend</button>  
             </div>
             <div class="col-xs-4">
               <button type="button" class="btn btn-default">Tickets</button>  
             </div>
             <div class="col-xs-4">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>  
           </div>
         </div>
       </div>
