@@ -104,7 +104,6 @@ class ShowsController < ApplicationController
   end
 
 
-
   def new
     @show = Show.new
   end
