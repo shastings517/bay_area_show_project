@@ -20,7 +20,6 @@
 </head>
 <body>
 
-
 <% flash.each do |key, value| %>
   <% if key == "notice" %>
     <%= content_tag :div, value, class: "text-center alert alert-warning" %>
@@ -31,7 +30,10 @@
   <% end %>
 <% end %>
 
+<div class="container">
+  
 <%= yield %>
-<%= render 'layouts/footer' %>
+  
+</div>
 </body>
 </html>
