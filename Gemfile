@@ -29,11 +29,18 @@ gem 'bcrypt', '~> 3.1.7'
 # Add Facebook Authenitcation
 gem 'omniauth-facebook'
 
+
 # Adding Handlebars Gem
 gem 'handlebars_assets'
 
 # Add to pull API
 gem "typhoeus"
+
+# Bootstrap styling
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+
+
 
 # Add follower capability
 gem "acts_as_follower"
@@ -43,6 +50,14 @@ gem "acts_as_follower"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+
+# API CALLS
+gem "typhoeus"
+
+# Simple time-select field
+gem "combined_time_select", "~> 1.0.1"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

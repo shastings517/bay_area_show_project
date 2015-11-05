@@ -18,5 +18,10 @@
 //= require turbolinks
 
 
+// Example using bootswatch
+//
+// First import  variables
+
+
 
 
