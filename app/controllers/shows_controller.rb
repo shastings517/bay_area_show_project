@@ -9,10 +9,12 @@ class ShowsController < ApplicationController
     endDate = threeDays.year.to_s + "-" + threeDays.month.to_s.rjust(n, "0") + "-" + threeDays.day.to_s.rjust(n, "0") 
 
     # API REQUEST
-    @response = Typhoeus::Request.new("http://api.bandsintown.com/events/search.json?location=San+Francisco,CA&date="+today+","+endDate+"&radius=10&app_id=777").run
+    @response = Typhoeus::Request.new("http://api.bandsintown.com/events/search.json?location=San+Francisco,CA&date=#{today},#{endDate}&radius=10&app_id=777").run
 
     # API RESPONSE
     @response_body = JSON.parse(@response.response_body)
+
+    puts @response_body
 
     # loop through the response
     # Make a new Show document per api response
@@ -45,7 +47,6 @@ class ShowsController < ApplicationController
         saledate: ticketDate,
         showtime: date
         )
-      
     end
 
 
