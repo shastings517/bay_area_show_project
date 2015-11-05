@@ -1,5 +1,8 @@
 class ShowsController < ApplicationController
   before_action :find_show, only: [:show,:edit,:update,:destroy]
+  before_action :set_user, only: [:new, :create]
+  before_action :ensure_correct_user_for_team, only: [:edit, :update, :destroy]
+
 
   def index
     # n = 2
@@ -115,7 +118,9 @@ class ShowsController < ApplicationController
 
     # find_user --> need to hold off on this until we have User up and runnign.
     #  But we need to push a show that a user created into a user's shows []
-    @show = Show.new(show_params)
+    # Show.new(show_params)
+
+    @show = @user.shows.create show_params
 
     # create showTime w/ the other 2 params
     # parse the time and showdate
@@ -193,6 +198,20 @@ class ShowsController < ApplicationController
     def find_show
       @show = Show.find params[:id]
     end
+
+    def set_user
+      @user = User.find params[:user_id]
+    end
+
+    def ensure_correct_user_for_show
+    show = Show.find params[:id]
+    unless show.user.id == session[:user_id]
+      redirect_to root_path, alert: "Not authorized"
+    end
+    # find which user made the team with params[:id]
+    # compare that user's id against current_user.id
+    # if they do not match up, redirect with a mean message
+  end
 end
 
 
