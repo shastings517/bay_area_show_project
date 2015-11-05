@@ -21,7 +21,6 @@
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <body>
 
-
 <% flash.each do |key, value| %>
   <% if key == "notice" %>
     <%= content_tag :div, value, class: "text-center alert alert-warning" %>
@@ -32,8 +31,10 @@
   <% end %>
 <% end %>
 
-
+<div class="container">
+  
 <%= yield %>
-<%= render 'layouts/footer' %>
+  
+</div>
 </body>
 </html>

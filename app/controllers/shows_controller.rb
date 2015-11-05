@@ -31,6 +31,33 @@ class ShowsController < ApplicationController
       end
 
       artist = show["artists"][0]["name"]
+
+      artistArr = artist.split(" ")
+
+      apiString = ""
+
+      if artistArr.length > 1
+        artistArr.each do |word|
+          if word == artistArr.last
+            apiString += word
+          else
+            apiString += word + "%20"
+          end
+        end
+      else
+        apiString = artist
+      end
+
+        @artist_response = Typhoeus::Request.new("http://api.bandsintown.com/artists/#{apiString}.json?api_version=2.0&app_id=777").run
+        @artist_body = JSON.parse(@artist_response.response_body)
+        image = @artist_body["image_url"]
+
+      # API CALL FOR ARTIST IMAGE
+      # @artist_response = Typhoeus::Request.new("http://api.bandsintown.com/artists/Beach%20House.json?api_version=2.0&app_id=777").run
+      # @artist_body = JSON.parse(@artist_response.response_body)
+      # image = @artist_body["image_url"]
+      ##########################################################
+
       venue = show["venue"]["name"]
       latitude = show["venue"]["latitude"]
       longitude = show["venue"]["longitude"]
@@ -39,7 +66,7 @@ class ShowsController < ApplicationController
       show = Show.create(
         title: artist,
         venue: venue,
-        image_url: "www.google.com",
+        image_url: image,
         attendance: 0,
         latitude: latitude, 
         longitude: longitude,
@@ -49,7 +76,9 @@ class ShowsController < ApplicationController
         )
     end
 
-
+    # IMAGE LOGIC
+    # If image_url is present, DO NOT MAKE API CALL, if not then make API call.
+    # Which means show = Show.new() and then .save() after api call
     # All the user-defined shows in the db
     date = Date.today
 
@@ -73,6 +102,7 @@ class ShowsController < ApplicationController
       @shows.push(show)
     end
   end
+
 
   def new
     @show = Show.new
