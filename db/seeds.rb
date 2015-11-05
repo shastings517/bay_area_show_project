@@ -17,4 +17,45 @@ user = User.create(
   sex: "M",
   )
 
+first = Show.create(title: "SPACE JAM",
+  venue: "Palace of fun",
+  image_url: "www.google.com",
+  description: "awesome",
+  attendance: 0,
+  genre: "Music",
+  price: 2,
+  showdate: Wed, 04 Nov 2015,
+  saledate: Wed, 04 Nov 2015,
+  address: "fun",
+  time: 2000-01-01 13:00:00 UTC,
+  showtime: Wed, 04 Nov 2015 13:00:00 UTC +00:00)
+
+
+second = Show.create(title: "Mozart Hologram",
+  venue: "Larry's Basement",
+  image_url: "www.google.com",
+  description: "spooky",
+  attendance: 0,
+  genre: "Halloween",
+  price: 2,
+  showdate: Fri, 06 Nov 2015,
+  saledate: Fri, 06 Nov 2015,
+  address: "fun",
+  time: 2000-01-01 13:00:00 UTC,
+  showtime: Wed, 04 Nov 2015 13:00:00 UTC +00:00)
+
+third = Show.create(title: "tomorrow",
+  venue: "tom",
+  image_url: "tom",
+  description: "tom",
+  attendance: 0,
+  genre: "om",
+  price: 4,
+  showdate: Thu, 05 Nov 2015,
+  saledate: Thu, 05 Nov 2015,
+  address: "8989 hhhh",
+  time: 2000-01-01 09:30:00 UTC,
+  showtime: Thu, 05 Nov 2015 09:30:00 UTC +00:00)
+
+
 
