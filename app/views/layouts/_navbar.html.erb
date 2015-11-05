@@ -16,14 +16,3 @@
     </ul>
   </div>
 </div>
-
-<div>
-<center>
-  <% if current_user %>
-    Welcome, <strong><%= current_user.username %></strong>!
-    <%= link_to "Log Out", logout_path, id: "logout" %>
-    
-  <% end %>
-  </center>
-  
-</div>

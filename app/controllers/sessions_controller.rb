@@ -23,17 +23,19 @@ class SessionsController < ApplicationController
 
    # login post
   def attempt_login
-    if params[:username].present? && params[:password].present?
-      found_user = User.where(username: params[:username]).first
-      if found_user && found_user.authenticate(params[:password])
+    puts "INSIDE THE ATTEMPT LOGIN"
+    if params[:user][:username].present? && params[:user][:password].present?
+      found_user = User.where(username: params[:user][:username]).first
+      if found_user && found_user.authenticate(params[:user][:password])
         flash[:alert] = "Welcome back #{found_user.email}!"
         session[:user_id] = found_user.id
-        redirect_to home_path
+        redirect_to root_path
       else
         flash[:alert] = "username / password combination is invalid"
         redirect_to login_path(@user)
       end
     else
+      # binding.pry
       flash[:alert] = "please enter username and password"
       redirect_to login_path
     end
