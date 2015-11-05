@@ -2,7 +2,6 @@ class ShowsController < ApplicationController
   before_action :find_show, only: [:show,:edit,:update,:destroy]
 
   def index
-
     n = 2
     t = Time.zone.now
     today = t.year.to_s + "-" + t.month.to_s.rjust(n, "0") + "-" + t.day.to_s.rjust(n, "0") 
@@ -18,26 +17,25 @@ class ShowsController < ApplicationController
     # All the user-defined shows in the db
     date = Date.today
 
-    futureDate = date.tomorrow.tomorrow.tomorrow
-    # ####  CURRENTLY NOT FILTERING OUT ANY SHOWS BY DATE!!! #####
-    # @shows = Show.find_by('showdate': date) ||= []
+    # Find all shows from today til 3 days from now in DB
+    oneDay = date.tomorrow
+    twoDays = date.tomorrow.tomorrow
+    threeDays = date.tomorrow.tomorrow.tomorrow
     @shows = Show.where('showdate': date)
-    @futureShows = Show.where('showdate': futureDate)
+    @tomorrow = Show.where('showdate': oneDay)
+    @dayAfter = Show.where('showdate': twoDays)
+    @dayAfterThat = Show.where('showdate': threeDays)
 
     # Combine all current shows with future shows
-
-    @futureShows.each do |show|
+    @tomorrow.each do |show|
       @shows.push(show)
     end
-
-    
-
-
-
-    
-
-
-
+     @dayAfter.each do |show|
+      @shows.push(show)
+    end
+     @dayAfterThat.each do |show|
+      @shows.push(show)
+    end
   end
 
   def new
@@ -45,7 +43,6 @@ class ShowsController < ApplicationController
   end
 
   def create
-
     params[:show].parse_time_select! :time
 
     # find_user --> need to hold off on this until we have User up and runnign.
@@ -93,7 +90,6 @@ class ShowsController < ApplicationController
     end
   end
 
-
   # MODAL --> Shouldn't navigate away from index page
   def show
   end
@@ -105,7 +101,6 @@ class ShowsController < ApplicationController
     redirect_to root_path
   end
    
-
    private
 
      def show_params
