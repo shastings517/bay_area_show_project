@@ -34,6 +34,7 @@ gem "typhoeus"
 
 # Add follower capability
 gem "acts_as_follower"
+gem 'handlebars_assets'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
