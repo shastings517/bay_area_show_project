@@ -1,21 +1,64 @@
 
 <%= render 'layouts/navbar' %>
 
+<%= content_tag :div, class: "show_class", data: {show: @show} do %>
+<% end %>
 
-<div id="googleMap" style="width:100%;height:300px;">
+<div class="container">
+  <div class="row">
+    
+    <div class="col-xs-4">
+      <img src="<%= @show.image_url %>" alt="" class="artistImg">
+    </div>  
+
+
+    <div class="col-xs-8">
+      <h3><%= @show.showtime.strftime("%B %d, %Y, (%H:%M)-12") %></h3>
+      <div class="page-header">
+        <h1><%= @show.title %>   <small>at <%= @show.venue %></small></h1><br>
+        <h4>Description: </h4>
+      </div><br>
+      <div class="row">
+        <div class="col-xs-6">
+          <button class="btn btn-success btn-lg" type="submit">Tickets</button>
+        </div>
+        <div class="col-xs-6">
+          <button class="btn btn-primary btn-lg" type="submit">Attend</button>
+        </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
 </div>
 
 
-<%= content_tag :div, class: "show_class", data: {show: @show} do %>
-<% end %>
+<div class="container bottomContainer">
+  <div class="row">
+    <div class="col-xs-4">
+      <h3>Attending: <%= @show.attendance %></h3>
+      <ul>
+        <li><img src="http://lorempixel.com/60/60/" alt="friendPic" class="friendPic">  someones friend</li><br>
+        <li><img src="http://lorempixel.com/60/60/" alt="friendPic" class="friendPic">  someones friend</li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="col-xs-8">
+      <h3>Location</h3>
+      <div id="googleMap" class="text-center"></div>
+    </div>
+  </div>
+</div>
+
+
 
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDtCLjcgQRgYbZTweBbL8Hz3amT8HsbS1Y"></script>
 
 <script>
-
-
-// function initialize() {
-  var myCenter = new google.maps.LatLng(($('.show_class').data('show').longitude),($('.show_class').data('show').latitude));
+// INITIALIZE MAP
+  var myCenter = new google.maps.LatLng(($('.show_class').data('show').latitude),($('.show_class').data('show').longitude));
   function initialize(){
     var mapProp = {
       center:myCenter,
@@ -28,6 +71,5 @@
     });
     marker.setMap(map);
   }
-
-google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, 'load', initialize);
 </script>

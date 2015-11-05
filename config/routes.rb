@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     # resources :sessions, only: [:create, :destroy]
 
     
-
     resources :users do    
     resources :shows, shallow: true
     member do

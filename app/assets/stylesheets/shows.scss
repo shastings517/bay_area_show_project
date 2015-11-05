@@ -3,6 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-img{
-  margin-top: 35px;
+// Place all the styles related to the shows controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.artistImg{
+  width: 300px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+#googleMap{
+  margin-top: 0px;
+  margin-bottom: 50px;
+  margin-right: 15px;
+  width: 90%;
+  height: 400px;
+}
+
+ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bottomContainer{
+  margin-top: 20px;
 }
