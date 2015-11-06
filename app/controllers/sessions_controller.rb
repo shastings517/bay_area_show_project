@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    # before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
+    before_action :prevent_login_signup, only: [:signup, :create, :login, :attempt_login]
 
     # render signup page
    def signup
