@@ -48,6 +48,11 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
+  #For images
+  config.serve_static_assets = true
+config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
+config.assets.compile = true
+
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 

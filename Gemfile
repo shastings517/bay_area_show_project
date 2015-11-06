@@ -57,6 +57,8 @@ gem "combined_time_select", "~> 1.0.1"
 
 gem 'whenever', :require => false
 
+gem 'rails_12factor', group: :production
+
 
 
 group :development, :test do
