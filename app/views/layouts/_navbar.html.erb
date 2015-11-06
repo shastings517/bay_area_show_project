@@ -1,17 +1,26 @@
-<div data-role="header">
-  <div data-role="navbar">
+
+   <div data-role="header">
+    
+
+    
+
+   
+        
+    <div data-role="navbar">
     <ul>
-      <!-- <li><a href="#anylink" data-icon="home">Home</a></li> -->
       <li><%= link_to "Home", root_path, data: {icon:'home'} %></li>
-<!--       <li><a href="#anylink" data-icon="arrow-r">Profile</a></li> -->
-
-<li><%= link_to "Log-in", login_path, data: {icon:'arrow-r'} %></li>
-
-<li><%= link_to "Log-out", logout_path, data: {icon:'user'},method: :delete%></li>
-
-
-<li><%= link_to "Sign-up", signup_path, data: {icon:'user'} %></li>
-      
+    <li><%= link_to "Profile", current_user, data: {icon:'arrow-r'} %></li>
+<li><%= link_to "Search Users", users_path, data: {icon:'user'} %></li>
+  <% if current_user %>
+<li><%= link_to "Add Show", new_user_show_path(current_user), data: {icon:'plus'} %></li>
+<% end %>
     </ul>
-  </div>
-</div>
+  </div><!-- /navbar -->
+
+
+
+  
+
+
+
+

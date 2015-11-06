@@ -31,6 +31,12 @@
 
           <%= submit_tag "Attend", class:"btn btn-primary btn-lg"%>
 
+          <!--Adding Edit Buttons-->
+          <span><%= link_to 'Delete', s , method: :delete, class: "btn btn-danger btn-sm", data: {confirm: 'Are you sure?'} %>
+    </span>
+   <span>
+      <%= link_to 'Update', edit_show_path(s), class: "btn btn-primary btn-sm" %></span>
+
          
 
 
