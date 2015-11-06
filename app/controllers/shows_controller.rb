@@ -1,12 +1,12 @@
 class ShowsController < ApplicationController
   before_action :find_show, only: [:show,:edit,:update,:destroy]
   before_action :set_user, only: [:new, :create]
-  before_action :ensure_correct_user_for_team, only: [:edit, :update, :destroy]
+  # before_action :ensure_correct_user_for_team, only: [:edit, :update, :destroy]
 
 
   def index
 
-    # # session[:user_id] = nil
+    # session[:user_id] = nil
     # n = 2
     # t = Time.zone.now
     # today = t.year.to_s + "-" + t.month.to_s.rjust(n, "0") + "-" + t.day.to_s.rjust(n, "0") 
@@ -191,8 +191,6 @@ class ShowsController < ApplicationController
     # @show.users << @user
 
     redirect_to root_path
-
-
 
   end
    

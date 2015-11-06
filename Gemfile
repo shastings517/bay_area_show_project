@@ -40,8 +40,6 @@ gem "typhoeus"
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 
-
-
 # Add follower capability
 gem "acts_as_follower"
 
@@ -52,11 +50,13 @@ gem "acts_as_follower"
 # gem 'capistrano-rails', group: :development
 
 
-# API CALLS
-gem "typhoeus"
-
 # Simple time-select field
 gem "combined_time_select", "~> 1.0.1"
+
+# Whenever --> runs simple cron jobs
+
+gem 'whenever', :require => false
+
 
 
 group :development, :test do
