@@ -8,7 +8,10 @@ class ShowsController < ApplicationController
 
   def index
 
+    # RESET BUTTON
     # session[:user_id] = nil
+
+    # ############################################
     # n = 2
     # t = Time.zone.now
     # today = t.year.to_s + "-" + t.month.to_s.rjust(n, "0") + "-" + t.day.to_s.rjust(n, "0") 
@@ -66,7 +69,6 @@ class ShowsController < ApplicationController
     #   # @artist_body = JSON.parse(@artist_response.response_body)
     #   # image = @artist_body["image_url"]
     #   ##########################################################
-
     #   venue = show["venue"]["name"]
     #   latitude = show["venue"]["latitude"]
     #   longitude = show["venue"]["longitude"]
@@ -81,33 +83,39 @@ class ShowsController < ApplicationController
     #     longitude: longitude,
     #     showdate: date,
     #     saledate: ticketDate,
-    #     showtime: date
+    #     showtime: date,
+    #     tix_url: tickets
     #     )
     # end
-    # # IMAGE LOGIC
-    # # If image_url is present, DO NOT MAKE API CALL, if not then make API call.
-    # # Which means show = Show.new() and then .save() after api call
-    # # All the user-defined shows in the db
-    # date = Date.today
-    # # Find all shows from today til 3 days from now in DB
-    # oneDay = date.tomorrow
-    # twoDays = date.tomorrow.tomorrow
-    # threeDays = date.tomorrow.tomorrow.tomorrow
-    # @shows = Show.where('showdate': date)
-    # @tomorrow = Show.where('showdate': oneDay)
-    # @dayAfter = Show.where('showdate': twoDays)
-    # @dayAfterThat = Show.where('showdate': threeDays)
 
-    # # Combine all current shows with future shows
-    # @tomorrow.each do |show|
-    #   @shows.push(show)
-    # end
-    #  @dayAfter.each do |show|
-    #   @shows.push(show)
-    # end
-    #  @dayAfterThat.each do |show|
-    #   @shows.push(show)
-    # end
+    ###########################################
+    # ALL THE ABOVE CODE MAKES AN API CALL FOR THE CURRENT DATE anD STORES EVERYTHING IN THE DB
+
+
+    # IMAGE LOGIC
+    # If image_url is present, DO NOT MAKE API CALL, if not then make API call.
+    # Which means show = Show.new() and then .save() after api call
+    # All the user-defined shows in the db
+    date = Date.today
+    # Find all shows from today til 3 days from now in DB
+    oneDay = date.tomorrow
+    twoDays = date.tomorrow.tomorrow
+    threeDays = date.tomorrow.tomorrow.tomorrow
+    @shows = Show.where('showdate': date)
+    @tomorrow = Show.where('showdate': oneDay)
+    @dayAfter = Show.where('showdate': twoDays)
+    @dayAfterThat = Show.where('showdate': threeDays)
+
+    # Combine all current shows with future shows
+    @tomorrow.each do |show|
+      @shows.push(show)
+    end
+     @dayAfter.each do |show|
+      @shows.push(show)
+    end
+     @dayAfterThat.each do |show|
+      @shows.push(show)
+    end
 
     @shows = Show.all
   end
