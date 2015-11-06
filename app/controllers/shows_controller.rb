@@ -187,9 +187,13 @@ class ShowsController < ApplicationController
 
     # binding.pry
     @show = Show.find params[:showID]
-    @user.shows << @show
-    # @show.users << @user
 
+    unless(@user.shows.include? @show)
+    @user.shows << @show
+    end
+
+
+    # @show.users << @user
     redirect_to root_path
 
   end
