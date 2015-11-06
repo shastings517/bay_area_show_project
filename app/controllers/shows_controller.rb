@@ -1,6 +1,8 @@
 class ShowsController < ApplicationController
   before_action :find_show, only: [:show,:edit,:update,:destroy]
   before_action :set_user, only: [:new, :create]
+  before_action :confirm_logged_in, only: [:attending, :edit, :update, :destroy, :new]
+
   # before_action :ensure_correct_user_for_team, only: [:edit, :update, :destroy]
 
 
