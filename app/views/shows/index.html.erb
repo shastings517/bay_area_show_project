@@ -1,90 +1,54 @@
+
+<div data-role="page" data-theme="b" id="demo-page" class="my-page">
+
+
+    <div data-role="header">
+      <h1>Bay Day<span>
+        
+<a href="index.html" data-icon="gear" class="ui-btn-right">
+    <% if current_user %>
+<span>Welcome <%=current_user.username%></span>
+<%end%>
+</a>
+
+
+      </span></h1>
+        <a href="#" data-shadow="false" data-iconshadow="false" data-icon="carat-l" data-iconpos="notext" data-rel="back" data-ajax="false">Back</a>
+    </div><!-- /header -->
+    <!--Add Navbar-->
 <%= render 'layouts/navbar' %>
+<!--Add Search Bar-->
+<div>
+<form class="ui-filterable">
+      <input id="myShows" data-type="search">
+    </form>
+    </div>
+    <!--listview begins here-->
+    <div data-role="content">
+   <ul data-role="listview" data-inset="true" data-input="#myShows">
+<!--Looping li tags -->
 
-<% if current_user %>
-<%= link_to "Add Show", new_user_show_path(current_user), class: "btn-primary btn-sm text-center" %>
 
-<% end %>
-
-<!-- USER CREATED SHOWS -->
-<ul data-role="listview" data-inset="true">
 <% if @shows %>
 <% @shows.each do |s| %>
 
-  <li data-transition="flip">
-    <%= link_to show_path(s) do %>
+      <li><a href="#">
       <img src="<%=s.image_url%>" alt="">
-
       <p> <strong>Date: </strong> <%=s.showdate%></p>
-
       <h2><%= s.title %></h2>
-
-      <h4>Venue: <%=s.venue%></h4>
-      <% end %>
-
-  <!-- MODAL -->
-    <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-admin" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="col-xs-10">
-              <h4 class="modal-title" id="myModalLabel"><%= s.showdate %></h4>
-            </div>
-            <div class="col-xs-2">
-              <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-
-          </div>
-          <div class="modal-body">
-
-            <div class="row">
-              <div class="col-md-6"><h1><%= s.title %></h1></div>
-              <div class="col-md-6"><img src="http://lorempixel.com/g/400/300/" alt=""></div>
-            </div>
-            <div class="row">
-
-            </div>
-            <div class="row">
-
-            </div>
-            <div class="row">
-
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <div class="col-xs-4">
-              <button type="button" class="btn btn-default attendBtn">Attend</button>
-            </div>
-            <div class="col-xs-4">
-              <button type="button" class="btn btn-default">Tickets</button>
-            </div>
-            <div class="col-xs-4 attendance">
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-<!-- If user is the owner of this show, display the delete and update buttons.  If not, do not display -->
-
-<!-- USER LOGIC HASN"T BEEN ADDED YET -->
-
-    <div>
-    <%= link_to 'Delete', s , method: :delete, class: "btn btn-danger btn-sm", data: {confirm: 'Are you sure?'} %>
-    </div>
-
-    <div>
-      <%= link_to 'Update', edit_show_path(s), class: "btn btn-primary btn-sm" %>
-    </div>
-
-  </li>
+      <h4>Venue:  <%=s.venue%></h4>
+    
+   
+      </a>
+    </li>
+    <% end %>
 <% end %>
-<% end %>
+
 
 
 
 </ul>
+<% render 'layouts/footer' %>
+</div>
 
 

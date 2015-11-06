@@ -31,14 +31,13 @@
   <% end %>
 <% end %>
 
-<div class="container">
 
-<% if current_user %>
-<h3>Welcome <%=current_user.username%></h3>
-<%end%>
+
+
   
 <%= yield %>
+<% render 'layouts/footer' %>
   
-</div>
+
 </body>
 </html>

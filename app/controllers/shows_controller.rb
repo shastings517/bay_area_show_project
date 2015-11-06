@@ -6,7 +6,7 @@ class ShowsController < ApplicationController
 
   def index
 
-    # # session[:user_id] = nil
+    # session[:user_id] = nil
     # n = 2
     # t = Time.zone.now
     # today = t.year.to_s + "-" + t.month.to_s.rjust(n, "0") + "-" + t.day.to_s.rjust(n, "0") 
