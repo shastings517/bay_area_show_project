@@ -5,7 +5,7 @@
     <div data-role="header">
       <h1>Bay Day<span>
         
-<a href="index.html" data-icon="gear" class="ui-btn-right">
+<a href="#" data-icon="gear" class="ui-btn-right">
     <% if current_user %>
 <span>Welcome <%=current_user.username%></span>
 <%end%>
@@ -25,30 +25,26 @@
     </div>
     <!--listview begins here-->
     <div data-role="content">
-   <ul data-role="listview" data-inset="true" data-input="#myShows">
-<!--Looping li tags -->
 
-
+<ul data-role="listview" data-inset="true">
 <% if @shows %>
 <% @shows.each do |s| %>
 
-      <li><a href="#">
+  <li data-transition="flip">
+    <%= link_to show_path(s) do %>
       <img src="<%=s.image_url%>" alt="">
+
       <p> <strong>Date: </strong> <%=s.showdate%></p>
+
       <h2><%= s.title %></h2>
-      <h4>Venue:  <%=s.venue%></h4>
-    
-   
-      </a>
-    </li>
-    <% end %>
+
+      <h4>Venue: <%=s.venue%></h4>
+      <% end %>
+  </li>
 <% end %>
-
-
-
-
+<% end %>
 </ul>
-<% render 'layouts/footer' %>
-</div>
+
+
 
 
