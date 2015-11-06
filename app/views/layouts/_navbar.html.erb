@@ -7,6 +7,7 @@
     
     <div data-role="navbar">
     <ul>
+    <li><%= link_to "Home", root_path, data: {icon:'home'} %></li>
 
     <% if current_user %>
     <li><%= link_to "Profile", current_user, data: {icon:'user'} %></li>
