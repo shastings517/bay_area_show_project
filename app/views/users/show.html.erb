@@ -1,17 +1,31 @@
 
 
 <div data-role='content'>
+<%= @user.image_url %>
+<%= @user.username %>
+<%= @user.follow_count %>
+<%= @user.follows_by_type('User') %>
 
-<p><%= @user.follow_count %></p>
-
-<p><%= link_to "Follow", follow_user_path(@user)%></p>
-
-<p><%= link_to "Unfollow", unfollow_user_path(@user) %></p>
-
+<
+<%= link_to "Follow", follow_user_path(@user)%>
+<%= link_to "Unfollow", unfollow_user_path(@user) %>
 </div>
 
+<div data-role='navbar'>
+  <ul>
+  <li>
+      <%= link_to "Account", '#',id: "account" %>
+      </li>
+      <li>
+      <%= link_to "Attending", '#', class: "ui-btn", id: "attending" %>
+      </li>
+      <li>
+      <%= link_to "Friends", '#', class: "ui-btn", id: "friends" %>
+      </li>
+      </ul>
+</div>
+    	<div id="swap"></div>
  
  
-
 
 
