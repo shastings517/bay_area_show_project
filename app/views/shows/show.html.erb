@@ -1,62 +1,47 @@
 
-<%= render 'layouts/navbar' %>
-
 <%= content_tag :div, class: "show_class", data: {show: @show} do %>
 <% end %>
 
-<div class="container">
-  <div class="row">
-    
-    <div class="col-xs-4">
+<!--Top Half-->
+  <div data-role="main" class="ui-content">
+    <!--Image Left-->
+       <div class="ui-grid-a ui-responsive">
+      <div class="ui-block-a">
       <img src="<%= @show.image_url %>" alt="" class="artistImg">
-    </div>  
+       </div>
+      <!--Image End-->
 
-    <div class="col-xs-8">
+<!--Show Info-->
+    <!--Detail block begins-->
+    <div class="ui-block-b">
       <h3><%= @show.showtime.strftime("%B %d, %Y, (%H:%M)-12") %></h3>
-      <div class="page-header">
-        <h1><%= @show.title %>   <small>at <%= @show.venue %></small></h1><br>
-        <h4>Description: </h4>
-      </div><br>
-      <div class="row">
-        <div class="col-xs-6">
-    
+     
+        <h1><%= @show.title %>   <small>at <%= @show.venue %></small></h1>
+      
+  </div>
+    <!--Detail block ends-->
+      <!--Ticket Info Begins-->
+      <div class="ui-block-c">
         <%= link_to "Tickets", @show.tix_url, class: "btn btn-success btn-sm"%>
-
-         
-        </div>
-        <div class="col-xs-6">
-
-
           <%= form_tag attending_path %>
+
           <%= hidden_field_tag "showID", @show.id%>
 
-
-
           <%= submit_tag "Attend", class:"btn btn-primary btn-lg"%>
-
-          <!--Adding Edit Buttons-->
-     
-
-         
-
-
-        <!--   <button class="btn btn-primary btn-lg" type="submit">Attend</button> -->
-        </div>
-        
-      </div>
+          </div>
+          <!--Ticket Info Ends-->
+    <!--Show Info Ends-->
+    </div>
     </div>
 
-    
-  </div>
-</div>
 
-
-<div class="container bottomContainer">
-  <div class="row">
-    <div class="col-xs-4">
+<!--Top Half Ends-->
+<!--Bottom Begins-->
+    <!--Attending Left-->
+     <div class="ui-grid-b ui-responsive">
+      <div class="ui-block-a">
       <h3>Attending: <%= @show.users.length %></h3>
       <ul>
-
       <% @show.users.each do |user| %>
 
         <% if user.image_url %>
@@ -66,18 +51,25 @@
 
         <% end %>
         <% end %>
-
-      
-       
-       
       </ul>
-    </div>
-    <div class="col-xs-8">
+      </div>
+   <!--Attending Ends-->
+   <!--Map Begins-->
+   <div class="ui-block-b">
       <h3>Location</h3>
       <div id="googleMap" class="text-center"></div>
-    </div>
-  </div>
-</div>
+   
+      <!--Map Ends-->
+      </div>
+      </div>
+
+     
+
+
+      <!--Bottom Ends-->
+    
+
+
 
 
 
