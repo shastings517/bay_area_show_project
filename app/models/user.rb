@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   acts_as_follower
 
    has_many :shows, through: :user_shows
-   has_many :user_shows
+   has_many :user_shows, dependent: :destroy
 
 
 end

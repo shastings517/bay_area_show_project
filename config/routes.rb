@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   
   delete '/logout', to: "sessions#logout", as: "logout"
 
+  post '/attending', to: "shows#attending", as: "attending"
+
   # get '/home', to: "sessions#index", as: 'home'
 
     # get '/shows', to: 'shows#index', as: 'shows'

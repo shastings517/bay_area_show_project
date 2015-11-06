@@ -11,7 +11,6 @@
       <img src="<%= @show.image_url %>" alt="" class="artistImg">
     </div>  
 
-
     <div class="col-xs-8">
       <h3><%= @show.showtime.strftime("%B %d, %Y, (%H:%M)-12") %></h3>
       <div class="page-header">
@@ -23,7 +22,19 @@
           <button class="btn btn-success btn-lg" type="submit">Tickets</button>
         </div>
         <div class="col-xs-6">
-          <button class="btn btn-primary btn-lg" type="submit">Attend</button>
+
+
+          <%= form_tag attending_path %>
+          <%= hidden_field_tag "showID", @show.id%>
+
+
+
+          <%= submit_tag "Attend", class:"btn btn-primary btn-lg"%>
+
+         
+
+
+        <!--   <button class="btn btn-primary btn-lg" type="submit">Attend</button> -->
         </div>
         
       </div>
@@ -37,7 +48,7 @@
 <div class="container bottomContainer">
   <div class="row">
     <div class="col-xs-4">
-      <h3>Attending: <%= @show.attendance %></h3>
+      <h3>Attending: <%= @show.users.length %></h3>
       <ul>
         <li><img src="http://lorempixel.com/60/60/" alt="friendPic" class="friendPic">  someones friend</li><br>
         <li><img src="http://lorempixel.com/60/60/" alt="friendPic" class="friendPic">  someones friend</li>
