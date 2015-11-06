@@ -3,8 +3,6 @@
 
 
 
-<div class="col-sm-offset-3">
-  <div class="col-sm-7">
   <% if @user.errors.any? %>
   <ul class="alert alert-danger">
   <% @user.errors.full_messages.each do |msg| %>
@@ -12,7 +10,8 @@
       <% end %>
   </ul> 
 <% end %>
-    <div class="well">
+
+  <div data-role="main" class="ui-content">
       <h2 class="text-center">Sign Up!</h2><br>
       <%= form_for @user, url: signup_path do |f| %>
         <div class="form-group">
@@ -38,6 +37,9 @@
         <%= f.submit "Signup", id:"submit-user", class:"btn btn-block btn-success text-center" %>
       <% end %>
     </div>
-  </div>
-</div>
+
+      </div>
+
+
+
 
