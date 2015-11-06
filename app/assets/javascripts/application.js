@@ -17,6 +17,11 @@
 //= require_tree ./templates
 //= require turbolinks
 //= require_tree .
+$(document).on('pageinit', function() {
+
+   $('.alert').delay(500).fadeIn('normal', function() {
+      $(this).delay(1500).fadeOut();
+   });
 
 $("#friends").click(function(e){
 	e.preventDefault();
@@ -91,4 +96,5 @@ $("#attending").click(function(e){
 	      .slideDown(500);
 	  }
 	});
+});
 });
