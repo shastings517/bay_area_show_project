@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     # get '/shows', to: 'shows#index', as: 'shows'
 
     
-    # resources :sessions, only: [:create, :destroy]
+    resources :sessions, only: [:create, :destroy]
 
     
     resources :users do    

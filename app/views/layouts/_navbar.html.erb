@@ -4,16 +4,32 @@
 
     
 
-   
-        
+    
     <div data-role="navbar">
     <ul>
-      <li><%= link_to "Home", root_path, data: {icon:'home'} %></li>
-    <li><%= link_to "Profile", current_user, data: {icon:'arrow-r'} %></li>
-<li><%= link_to "Search Users", users_path, data: {icon:'user'} %></li>
+
+    <% if current_user %>
+    <li><%= link_to "Profile", current_user, data: {icon:'user'} %></li>
+    <% end %>
+
+    <% if current_user %>
+<li><%= link_to "Search Users", users_path, data: {icon:'grid'} %></li>
+<% else %>
+<li><%= link_to "Sign Up", signup_path, data: {icon:'user'} %></li>
+<% end %>
+
+
+
   <% if current_user %>
 <li><%= link_to "Add Show", new_user_show_path(current_user), data: {icon:'plus'} %></li>
+		
 <% end %>
+		<% if current_user %>
+      <li><%= link_to "Logout", logout_path, data: {icon:'delete'}, method: :delete %></li>
+      	<% else %>
+      	<li><%= link_to "Login", login_path, data: {icon:'arrow-r'} %></li>
+      	<% end %>
+
     </ul>
   </div><!-- /navbar -->
 

@@ -1,28 +1,11 @@
 
-<div data-role="page" data-theme="b" id="demo-page" class="my-page">
 
-
-    <div data-role="header">
-      <h1><img width='200px'src="/assets/bayday.svg"><span>
-        
-<a href="#" data-icon="gear" class="ui-btn-right">
-    <% if current_user %>
-<span>Welcome <%=current_user.username%></span>
-<%end%>
-</a>
-
-
-      </span></h1>
-        <a href="#" data-shadow="false" data-iconshadow="false" data-icon="carat-l" data-iconpos="notext" data-rel="back" data-ajax="false">Back</a>
-    </div><!-- /header -->
-    <!--Add Navbar-->
-<%= render 'layouts/navbar' %>
 <!--Add Search Bar-->
-<div>
+<!-- <div>
 <form class="ui-filterable">
       <input id="myShows" data-type="search">
     </form>
-    </div>
+    </div> -->
     <!--listview begins here-->
     <div data-role="content">
 

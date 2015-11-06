@@ -3,33 +3,42 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 
-  <title>BayAreaShowProject</title>
+
+  <title>Bay Day</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 <body>
 
-<% flash.each do |key, value| %>
-  <% if key == "notice" %>
-    <%= content_tag :div, value, class: "text-center alert alert-warning" %>
-  <% elsif key == "alert" %>
-    <%= content_tag :div, value, class: "text-center alert alert-danger" %>
-  <% else %>
-    <%= content_tag :div, value, class: "text-center alert alert-success" %>
-  <% end %>
-<% end %>
+
+
+<div data-role="page" data-theme="b" id="demo-page" class="my-page">
+
+
+    <div data-role="header">
+      <img width='200px'src="/assets/bayday.svg">
+        
+<a href="#" data-icon="star" class="ui-btn-right">
+
+    <% if current_user %>
+<span>Welcome <%=current_user.username%>
+
+
+</span>
+<%end%>
+
+</a>
+
+  
+    </div><!-- /header -->
+    <!--Add Navbar-->
+<%= render 'layouts/navbar' %>
+<%= render 'layouts/errors' %>
 
 
 
@@ -39,5 +48,4 @@
 <% render 'layouts/footer' %>
   
 
-</body>
-</html>
+

@@ -1,28 +1,17 @@
-<%= render 'layouts/navbar' %>
-<%= render 'layouts/errors' %>
-
-<div>User Image</div>
-<%= @user.follow_count %>
-<%= link_to "Follow", follow_user_path(@user)%>
-<%= link_to "Unfollow", unfollow_user_path(@user) %>
 
 
-  <div data-role="navbar" id="attach">
-  <ul>
-  <li>
-      <%= link_to "Account", '#', class: "ui-btn", id: "account" %>
-      </li>
-      <li>
-      <%= link_to "Attending", '#', class: "ui-btn", id: "attending" %>
-      </li>
-      <li>
-      <%= link_to "Friends", '#', class: "ui-btn", id: "friends" %>
-      </li>
-      </ul>
-    	<div id="swap"></div>
-    </div>
+<div data-role='content'>
+
+<p><%= @user.follow_count %></p>
+
+<p><%= link_to "Follow", follow_user_path(@user)%></p>
+
+<p><%= link_to "Unfollow", unfollow_user_path(@user) %></p>
+
+</div>
+
+ 
  
 
 
 
-<!-- Render partials -->
