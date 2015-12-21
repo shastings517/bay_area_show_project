@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   end
 
   def show
-     @user = User.find params[:id]
+    @user = User.find params[:id]
+    respond_to do |format|
+      format.json { render json: @user.to_json(include: :shows)}
+      format.html
+    end
   end
 
   def follow

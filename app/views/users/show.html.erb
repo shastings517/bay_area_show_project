@@ -20,10 +20,10 @@
 <div data-role='navbar'>
   <ul>
   <li>
-      <%= link_to "Account", '#', class: "ui-btn", id: "account" %>
+      <%= link_to "Account", '#', class: "ui-btn", id: "account", data:{id:@user.id} %>
       </li>
       <li>
-      <%= link_to "Attending", '#', class: "ui-btn", id: "attending" %>
+      <%= link_to "Attending", '#', class: "ui-btn", id: "attending", data:{id:@user.id} %>
       </li>
       <li>
       <%= link_to "Friends", '#', class: "ui-btn", id: "friends" %>

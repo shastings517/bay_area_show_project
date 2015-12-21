@@ -1,25 +1,20 @@
 
 
-<!--Add Search Bar-->
-<!-- <div>
-<form class="ui-filterable">
-      <input id="myShows" data-type="search">
-    </form>
-    </div> -->
-    <!--listview begins here-->
-    <div data-role="content">
 
-<ul data-role="listview" data-inset="true">
+
+<div data-role="content">
+<ul data-role="listview" data-inset="true" class="lineUp">
 <% if @shows %>
 <% @shows.each do |s| %>
 
   <li data-transition="flip">
     <%= link_to show_path(s) do %>
-      <img src="<%=s.image_url%>" alt="">
+
+      <h2><%= s.title %></h2>
+      <img id="picture" src="<%=s.image_url%>" alt="">
 
       <p> <strong>Date: </strong> <%=s.showdate%></p>
 
-      <h2><%= s.title %></h2>
 
       <h4>Venue: <%=s.venue%></h4>
       <% end %>
@@ -27,6 +22,10 @@
 <% end %>
 <% end %>
 </ul>
+
+</div>
+    
+
 
 
 
