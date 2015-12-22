@@ -1,17 +1,13 @@
-
-
-
-
 <div data-role="content">
 <ul data-role="listview" data-inset="true" class="lineUp">
 <% if @shows %>
 <% @shows.each do |s| %>
 
-  <li data-transition="flip">
+  <li class="line3">
     <%= link_to show_path(s) do %>
 
       <h2><%= s.title %></h2>
-      <img id="picture" src="<%=s.image_url%>" alt="">
+      <img class="picture" src="<%=s.image_url%>" alt="">
 
       <p> <strong>Date: </strong> <%=s.showdate%></p>
 
@@ -19,6 +15,7 @@
       <h4>Venue: <%=s.venue%></h4>
       <% end %>
   </li>
+
 <% end %>
 <% end %>
 </ul>
