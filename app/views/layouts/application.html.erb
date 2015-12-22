@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="img/bay-day.png" />
 
   <title>Bay Day</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script>
+$.mobile.toolbar.prototype.options.addBackBtn=true;
+if (navigator.userAgent.indexOf("Android") != -1) { 
+$.mobile.defaultPageTransition = 'none'; $.mobile.defaultDialogTransition = 'none'; 
+}
+ else {$.mobile.defaultPageTransition = 'slide';}
+</script>
 
 
 </head>
