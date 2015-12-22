@@ -6,6 +6,7 @@ class ResetsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user
       user.generate_password_reset_token!
+      binding.pry
       Reset.password_reset(user).deliver_now
       redirect_to login_path, notice: "Email sent"
     else
@@ -16,10 +17,11 @@ class ResetsController < ApplicationController
 
   def edit
     @user = User.find_by(password_reset_token: params[:id])
+    binding.pry
     if @user
       # will render edit view
     else
-      redirect_to login_path, alert: "Invalide reset token"
+      redirect_to login_path, alert: "Invalid reset token"
     end
   end
 

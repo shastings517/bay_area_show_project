@@ -1,5 +1,15 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } 
+  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.smtp_settings = { 
+    :address => "smtp.mandrillapp.com", 
+    :port => 587, # ports 587 and 2525 are also supported with STARTTLS 
+    :enable_starttls_auto => true, # detects and uses STARTTLS 
+    :user_name => Rails.application.secrets[:MANDRILL_USERNAME], 
+    :password => Rails.application.secrets[:MANDRILL_PASSWORD] # SMTP password is any valid API key
+    } 
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -35,17 +45,6 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } 
-  config.action_mailer.raise_delivery_errors = true 
-  config.action_mailer.delivery_method = :smtp 
-  config.action_mailer.smtp_settings = { 
-    :address => "smtp.mandrillapp.com", 
-    :port => 587, # ports 587 and 2525 are also supported with STARTTLS 
-    :enable_starttls_auto => true, # detects and uses STARTTLS 
-    :user_name => Rails.application.secrets[:MANDRILL_USERNAME], 
-    :password => Rails.application.secrets[:MANDRILL_PASSWORD] # SMTP password is any valid API key
-    } 
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
