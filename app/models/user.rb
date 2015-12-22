@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
    has_many :shows, through: :user_shows
    has_many :user_shows, dependent: :destroy
 
+   def generate_password_reset_token!
+     update(password_reset_token: SecureRandom.urlsafe_base64(48))
+   end
 
 end
 

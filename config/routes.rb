@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   post '/attending', to: "shows#attending", as: "attending"
 
-
+  resources :resets, only: [:new, :create, :edit, :update]
     
     resources :sessions, only: [:create, :destroy]
 
